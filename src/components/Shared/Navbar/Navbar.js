@@ -1,5 +1,5 @@
 import React from "react";
-import UserIImg from "../../Asset/images/her2.jpg";
+import UserIImg from "../../../Asset/images/her2.jpg";
 import Link from "./Link";
 import NavCart from "./NavCart";
 import { Bars3Icon } from "@heroicons/react/24/solid";

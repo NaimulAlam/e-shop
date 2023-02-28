@@ -9,6 +9,10 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  const handleSignInWithGoogle = () => {
+    signInWithGoogle();
+    navigate(from, { replace: true });
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -76,12 +80,18 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
-              <div className="form-control mt-6">
-                <button onClick={signInWithGoogle} className="btn btn-error">
-                  Google Login
-                </button>
-              </div>
             </form>
+          </div>
+          <div className="divider"></div>
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div className="form-control p-2">
+              <button
+                onClick={handleSignInWithGoogle}
+                className="btn w-full btn-error"
+              >
+                Google Login
+              </button>
+            </div>
           </div>
         </div>
       </div>

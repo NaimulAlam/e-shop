@@ -5,6 +5,9 @@ import Home from "../Pages/HomePage/Home";
 import NotFound from "../Pages/NotFound/NotFound";
 import OrderReview from "../Pages/OrderReview/OrderReview";
 import { LoaderProductsData } from "../Loaders/LoaderProductsData";
+import Login from "../Pages/Login/Login";
+import Signup from "../Pages/Signup/Signup";
+import PriveteRoute from "./PriveteRoute";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +26,19 @@ export const router = createBrowserRouter([
       {
         path: "/orders",
         loader: LoaderProductsData,
-        element: <OrderReview />,
+        element: (
+          <PriveteRoute>
+            <OrderReview />,
+          </PriveteRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/sign-up",
+        element: <Signup />,
       },
     ],
   },

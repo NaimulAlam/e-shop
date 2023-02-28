@@ -1,16 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import UserIImg from "../../../Asset/images/her2.jpg";
 import Link from "./Link";
 import NavCart from "./NavCart";
 import { Bars3Icon } from "@heroicons/react/24/solid";
+import { AuthContext } from "../../../Context/UserContext";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.eroor(error);
+      });
+  };
+
   const MainRoutes = [
     { id: 1, name: "Home", path: "/" },
     { id: 2, name: "Shop", path: "/shop" },
-    { id: 3, name: "Company", path: "/company" },
-    { id: 4, name: "Men", path: "/men" },
-    { id: 5, name: "Women", path: "/women" },
+    { id: 3, name: "Orders", path: "/orders" },
+    // conditionally show the links optional chainning with user? for email important
+    !user?.email
+      ? {
+          id: 4,
+          name: "Login",
+          path: "/login",
+        }
+      : {
+          id: 5,
+          name: "Logout",
+          path: "/",
+          handleLogOut,
+        },
+    !user?.email
+      ? { id: 6, name: "Sign-up", path: "/sign-up" }
+      : { id: 7, name: `Welcome ${user?.email}!`, path: "#" },
   ];
 
   const UserRoutes = [
@@ -24,7 +49,6 @@ const Navbar = () => {
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            {/* <BeakerIcon className="h-6 w-6 text-blue-500" /> */}
             <Bars3Icon className="h-6 w-6 text-slate-900" />
           </label>
           <ul

@@ -3,8 +3,6 @@ import "./Cart.css";
 import { XCircleIcon } from "@heroicons/react/24/solid";
 
 const Cart = ({ cart, clearCart, children }) => {
-  // const { id, price, shipping } = cart;
-
   let total = 0;
   let shipping = 0;
   let quantity = 0;
@@ -47,19 +45,21 @@ const Cart = ({ cart, clearCart, children }) => {
         ))}
       </div>
       <div>
-        <p>Selected Items: {quantity}</p>
-        <p>Total Price: ${total.toFixed(2)}</p>
-        <p>Shipping Cost: ${shipping.toFixed(2)}</p>
-        <p>Tax: ${tax} </p>
-        <h5>Grand Total: ${grandTotal}</h5>
+        <div>
+          <p>Selected Items: {quantity}</p>
+          <p>Total Price: ${total.toFixed(2)}</p>
+          <p>Tax: ${tax}</p>
+          <p>Shipping Cost: ${shipping.toFixed(2)}</p>
+          <h5>Grand Total: ${grandTotal}</h5>
+        </div>
         <div>
           {grandTotal > 0 && (
             <button className="clear-cart-btn" onClick={() => clearCart()}>
               Clear Cart
             </button>
           )}
+          <div>{children}</div>
         </div>
-        <div>{children}</div>
       </div>
     </div>
   );

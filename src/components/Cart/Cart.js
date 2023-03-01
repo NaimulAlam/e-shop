@@ -54,14 +54,13 @@ const Cart = ({ children }) => {
               <h5>Grand Total: ${Subtotal}</h5>
             </div>
             <div>
+              <div>{children}</div>
               <button
                 className="btn btn-error rounded-md w-full mt-2"
                 onClick={() => clearCart()}
               >
                 Clear Cart
               </button>
-
-              <div>{children}</div>
             </div>
           </div>
         </>

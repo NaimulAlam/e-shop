@@ -5,9 +5,9 @@ const ReviewProducts = ({ product, handleRemoveProduct }) => {
   const { id, name, price, quantity, img, shipping } = product;
 
   return (
-    <div className="card card-side bg-base-100 shadow-xl m-2 w-11/12">
+    <div className="card card-side bg-base-100 shadow-xl p-2 my-5 w-11/12">
       <figure className="w-60">
-        <img src={img} alt="Movie" />
+        <img src={img} className="rounded-md" alt="Movie" />
       </figure>
       <div className="card-body w-1/2">
         <h2 className="card-title">{name}</h2>

@@ -45,6 +45,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/*",
+    loader: LoaderProductsData,
     element: <NotFound />,
   },
 ]);

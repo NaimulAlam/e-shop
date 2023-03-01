@@ -11,7 +11,7 @@ const CartContext = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const handleAddtoCart = (selectedProduct) => {
-    console.log("selectedProduct: ", selectedProduct);
+    // console.log("selectedProduct: ", selectedProduct);
     let newCart = [];
     const existedProduct = cart.find(
       (product) => product.id === selectedProduct.id

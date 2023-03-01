@@ -4,9 +4,13 @@ import React from "react";
 function NavCart() {
   return (
     <div className="dropdown dropdown-end">
-      <label tabIndex={0} className="btn btn-ghost btn-circle">
+      <label
+        tabIndex={0}
+        htmlFor="shop-cart-drawer"
+        className="btn btn-ghost btn-circle"
+      >
         <div className="indicator">
-          <ShoppingBagIcon className="h-6 w-6 text-slate-900"/>
+          <ShoppingBagIcon className="h-6 w-6 text-slate-900" />
           <span className="badge badge-sm indicator-item">8</span>
         </div>
       </label>

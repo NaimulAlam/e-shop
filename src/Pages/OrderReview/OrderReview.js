@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { deleteShoppingCart, removeFromLocalStorage } from "../../utilities/localStorage";
+import {
+  deleteShoppingCart,
+  removeFromLocalStorage,
+} from "../../utilities/localStorage";
 import ReviewProducts from "./ReviewProducts";
 import Cart from "../../components/Cart/Cart";
 
@@ -24,27 +27,35 @@ function OrderReview() {
   };
 
   return (
-    <div className="shop-container">
-      <div className="orders-container">
-        {cart.map((product) => (
-          <ReviewProducts
-            key={product.id}
-            product={product}
-            handleRemoveProduct={handleRemoveProduct}
-          ></ReviewProducts>
-        ))}
-        {cart.length === 0 && (
-          <div className="empty-cart">
-            <h2>No Produts to review!</h2>
-            <button>
-              <Link to="/">Shop Now</Link>
-            </button>
+    <div>
+      {cart.length === 0 ? (
+        <div className="container m-5">
+          <h2 className="text-2xl">No Produts to review!</h2>
+          <h2 className="text-xl">
+            Please visit our shop to add some produsts to review ...
+          </h2>
+          <button className="btn btn-primary">
+            <Link to="/shop">Shop Now</Link>
+          </button>
+        </div>
+      ) : (
+        <div className="container mx-auto">
+          <div className="grid grid-cols-3 gap-5">
+            <div className="col-span-2 mx-auto">
+              {cart.map((product) => (
+                <ReviewProducts
+                  key={product.id}
+                  product={product}
+                  handleRemoveProduct={handleRemoveProduct}
+                ></ReviewProducts>
+              ))}
+            </div>
+            <div className="cart-container">
+              <Cart cart={cart} clearCart={clearCart}></Cart>
+            </div>
           </div>
-        )}
-      </div>
-      <div className="cart-container">
-        <Cart cart={cart} clearCart={clearCart}></Cart>
-      </div>
+        </div>
+      )}
     </div>
   );
 }

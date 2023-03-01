@@ -19,7 +19,7 @@ const Navbar = () => {
   const MainRoutes = [
     { id: 1, name: "Home", path: "/" },
     { id: 2, name: "Shop", path: "/shop" },
-    { id: 3, name: "Orders", path: "/orders" },
+    { id: 3, name: "Orders", path: "/orders-review" },
     // conditionally show the links optional chainning with user? for email important
     !user?.email
       ? {

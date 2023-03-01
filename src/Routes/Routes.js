@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
         element: <Shop />,
       },
       {
-        path: "/orders",
+        path: "/orders-review",
         loader: LoaderProductsData,
         element: (
           <PriveteRoute>

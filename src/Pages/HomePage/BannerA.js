@@ -1,5 +1,6 @@
 import React from "react";
 import BannerABg from "../../Asset/images/desk.jpg";
+import { Link } from "react-router-dom";
 
 function BannerA() {
   return (
@@ -20,9 +21,11 @@ function BannerA() {
               announcements. Reflect on the shallow nature of existence. At
               least you have a really nice desk setup.
             </p>
-            <button className="btn btn-outline btn-primary btn-wide">
-              Shop Workspace
-            </button>
+            <Link to="/shop">
+              <button className="btn btn-outline btn-primary btn-wide">
+                Shop Workspace
+              </button>
+            </Link>
           </div>
         </div>
       </div>

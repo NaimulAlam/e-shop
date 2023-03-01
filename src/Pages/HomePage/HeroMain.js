@@ -1,12 +1,13 @@
 import React from "react";
 import HeroMainBg from "../../Asset/images/AppleHP.jpg";
+import { Link } from "react-router-dom";
 
 function HeroMain() {
   return (
     <div
       className="hero min-h-screen"
       style={{
-        backgroundImage: `url(${HeroMainBg})`
+        backgroundImage: `url(${HeroMainBg})`,
       }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
@@ -18,7 +19,9 @@ function HeroMain() {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <button className="btn btn-primary">Shop Now</button>
+          <Link to="/shop">
+            <button className="btn btn-primary">Shop Now</button>
+          </Link>
         </div>
       </div>
     </div>

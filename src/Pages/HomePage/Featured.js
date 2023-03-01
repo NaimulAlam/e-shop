@@ -1,5 +1,6 @@
 import React from "react";
 import ProductImg from "../../Asset/images/nike-red-shoes.jpg";
+import { Link } from "react-router-dom";
 
 function Featured() {
   return (
@@ -14,7 +15,9 @@ function Featured() {
             <h2 className="card-title">Shoes!</h2>
 
             <div className="card-actions justify-center">
-              <button className="btn btn-warning w-full">Explore</button>
+              <Link to="/shop">
+                <button className="btn btn-warning w-full">Explore</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -26,7 +29,9 @@ function Featured() {
             <h2 className="card-title">Shoes!</h2>
 
             <div className="card-actions justify-center">
-              <button className="btn btn-warning w-full">Explore</button>
+              <Link to="/shop">
+                <button className="btn btn-warning w-full">Explore</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -38,7 +43,9 @@ function Featured() {
             <h2 className="card-title">Shoes!</h2>
 
             <div className="card-actions justify-center">
-              <button className="btn btn-warning w-full">Explore</button>
+              <Link to="/shop">
+                <button className="btn btn-warning w-full">Explore</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -50,7 +57,9 @@ function Featured() {
             <h2 className="card-title">Shoes!</h2>
 
             <div className="card-actions justify-center">
-              <button className="btn btn-warning w-full">Explore</button>
+              <Link to="/shop">
+                <button className="btn btn-warning w-full">Explore</button>
+              </Link>
             </div>
           </div>
         </div>

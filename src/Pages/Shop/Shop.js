@@ -1,39 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Cart from "../../components/Cart/Cart";
-import {
-  addToLocalStorage,
-  deleteShoppingCart,
-} from "../../utilities/localStorage";
+import { CartDetailsContext } from "../../Context/CartContext";
 
 const Shop = () => {
   const { products, previousCart } = useLoaderData();
-  // console.log(products);
-  const [cart, setCart] = useState(previousCart);
 
-  const clearCart = () => {
-    setCart([]);
-    deleteShoppingCart();
-  };
+  const { cart, setCart, handleAddtoCart, clearCart } =
+    useContext(CartDetailsContext);
 
-  const handleAddtoCart = (selectedProduct) => {
-    console.log("selectedProduct: ", selectedProduct);
-    let newCart = [];
-    const existedProduct = cart.find(
-      (product) => product.id === selectedProduct.id
-    );
-    if (!existedProduct) {
-      selectedProduct.quantity = 1;
-      newCart = [...cart, selectedProduct];
-    } else {
-      const rest = cart.filter((product) => product.id !== selectedProduct.id);
-      existedProduct.quantity += 1;
-      newCart = [...rest, existedProduct];
-    }
-    setCart(newCart);
-    addToLocalStorage(selectedProduct.id);
-  };
+  useEffect(() => {
+    setCart(previousCart);
+  }, []);
 
   return (
     <div className="drawer drawer-end">

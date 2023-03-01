@@ -1,30 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import {
-  deleteShoppingCart,
-  removeFromLocalStorage,
-} from "../../utilities/localStorage";
 import ReviewProducts from "./ReviewProducts";
 import Cart from "../../components/Cart/Cart";
+import { CartDetailsContext } from "../../Context/CartContext";
 
 function OrderReview() {
   const { previousCart } = useLoaderData();
-  console.log(previousCart);
   // create a state so we can remove items from the cart
-  const [cart, setCart] = useState(previousCart);
+  const { cart, setCart, clearCart, handleRemoveProduct } =
+    useContext(CartDetailsContext);
 
-  const clearCart = () => {
-    setCart([]);
-    deleteShoppingCart();
-  };
-
-  const handleRemoveProduct = (productId) => {
-    const remainingProducts = cart.filter(
-      (product) => product.id !== productId
-    );
-    setCart(remainingProducts);
-    removeFromLocalStorage(productId);
-  };
+  useEffect(() => {
+    if (previousCart) {
+      setCart(previousCart);
+    }
+  }, []);
 
   return (
     <div>
@@ -34,9 +24,9 @@ function OrderReview() {
           <h2 className="text-xl">
             Please visit our shop to add some produsts to review ...
           </h2>
-          <button className="btn btn-primary">
-            <Link to="/shop">Shop Now</Link>
-          </button>
+          <Link to="/shop">
+            <button className="btn btn-primary">Shop Now</button>
+          </Link>
         </div>
       ) : (
         <div className="container mx-auto">
@@ -50,9 +40,21 @@ function OrderReview() {
                 ></ReviewProducts>
               ))}
             </div>
-            <div className="cart-container">
-              <Cart cart={cart} clearCart={clearCart}></Cart>
+            <div>
+              <button
+                className="btn btn-error rounded-md w-full mt-2"
+                onClick={() => clearCart()}
+              >
+                Clear Cart
+              </button>
             </div>
+            {/* <div className="cart-container">
+              <Cart
+                cart={cart}
+                clearCart={clearCart}
+                handleRemoveProduct={handleRemoveProduct}
+              ></Cart>
+            </div> */}
           </div>
         </div>
       )}

@@ -1,23 +1,28 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import CartItems from "./CartItems";
+import { CartDetailsContext } from "../../Context/CartContext";
+import { useLoaderData } from "react-router-dom";
 
-const Cart = ({ cart, clearCart, children }) => {
-  let total = 0;
-  let shipping = 0;
-  let quantity = 0;
+const Cart = ({ children }) => {
+  const { previousCart } = useLoaderData();
 
-  for (const product of cart) {
-    quantity += product.quantity;
-    total = total + product.price * product.quantity;
-    shipping += product.shipping;
-  }
+  const {
+    cart,
+    setCart,
+    clearCart,
+    handleRemoveProduct,
+    quantity,
+    Subtotal,
+    tax,
+    total,
+    shipping,
+  } = useContext(CartDetailsContext);
 
-  const tax = parseFloat(total * 0.1).toFixed(2);
-  const Subtotal = (
-    parseFloat(total) +
-    parseFloat(shipping) +
-    parseFloat(tax)
-  ).toFixed(2);
+  useEffect(() => {
+    if (previousCart) {
+      setCart(previousCart);
+    }
+  }, []);
 
   return (
     <>
@@ -33,7 +38,11 @@ const Cart = ({ cart, clearCart, children }) => {
             <h2 className="text-center m-2"> Your Shopping Cart</h2>
 
             {cart.map((cartItem) => (
-              <CartItems key={cartItem.id} cartItem={cartItem} />
+              <CartItems
+                key={cartItem.id}
+                cartItem={cartItem}
+                handleRemoveProduct={handleRemoveProduct}
+              />
             ))}
           </ul>
           <div className="container mx-auto text-center">

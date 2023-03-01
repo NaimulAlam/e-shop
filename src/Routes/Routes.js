@@ -13,6 +13,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    loader: LoaderProductsData,
     children: [
       {
         path: "/",

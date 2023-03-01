@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect} from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import ReviewProducts from "./ReviewProducts";
-import Cart from "../../components/Cart/Cart";
 import { CartDetailsContext } from "../../Context/CartContext";
 
 function OrderReview() {
@@ -14,7 +13,7 @@ function OrderReview() {
     if (previousCart) {
       setCart(previousCart);
     }
-  }, []);
+  }, [previousCart, setCart]);
 
   return (
     <div>

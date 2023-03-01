@@ -12,7 +12,7 @@ const Shop = () => {
 
   useEffect(() => {
     setCart(previousCart);
-  }, []);
+  }, [previousCart, setCart]);
 
   return (
     <div className="drawer drawer-end">

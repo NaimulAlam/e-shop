@@ -1,10 +1,9 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import {
   addToLocalStorage,
   deleteShoppingCart,
   removeFromLocalStorage,
 } from "../utilities/localStorage";
-import { useLoaderData } from "react-router-dom";
 
 export const CartDetailsContext = createContext();
 

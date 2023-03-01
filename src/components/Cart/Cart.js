@@ -22,7 +22,7 @@ const Cart = ({ children }) => {
     if (previousCart) {
       setCart(previousCart);
     }
-  }, []);
+  }, [previousCart, setCart]);
 
   return (
     <>

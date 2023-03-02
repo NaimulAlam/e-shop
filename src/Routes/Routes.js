@@ -8,6 +8,7 @@ import { LoaderProductsData } from "../Loaders/LoaderProductsData";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 import PriveteRoute from "./PriveteRoute";
+import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
         path: "/shop",
         loader: LoaderProductsData,
         element: <Shop />,
+      },
+      {
+        path: "/product-details",
+        element: <ProductDetails />,
       },
       {
         path: "/orders-review",

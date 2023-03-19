@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import UserIImg from "../../../Asset/images/her2.jpg";
-import NavLinks from "./NavLinks";
+import NavItems from "./NavItems";
 import NavCart from "./NavCart";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import { AuthContext } from "../../../Context/UserContext";
@@ -55,11 +55,11 @@ const Navbar = () => {
           >
             <li>
               {MainRoutes.map((route) => (
-                <NavLinks
+                <NavItems
                   key={route.id}
                   route={route}
                   className={route.className}
-                ></NavLinks>
+                ></NavItems>
               ))}
             </li>
             <li>
@@ -75,7 +75,7 @@ const Navbar = () => {
                   </label>
                   <ul tabIndex={0} className="ml-[-5rem] p-4 bg-base-200 w-32">
                     {UserRoutes.map((route) => (
-                      <NavLinks key={route.id} route={route}></NavLinks>
+                      <NavItems key={route.id} route={route}></NavItems>
                     ))}
                   </ul>
                 </>
@@ -98,11 +98,11 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">
           <li>
             {MainRoutes.map((route) => (
-              <NavLinks
+              <NavItems
                 key={route.id}
                 route={route}
                 className={route.className}
-              ></NavLinks>
+              ></NavItems>
             ))}
           </li>
         </ul>
@@ -124,7 +124,7 @@ const Navbar = () => {
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
               >
                 {UserRoutes.map((route) => (
-                  <NavLinks key={route.id} route={route}></NavLinks>
+                  <NavItems key={route.id} route={route}></NavItems>
                 ))}
               </ul>
             </>

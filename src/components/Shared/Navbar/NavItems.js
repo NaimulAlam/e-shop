@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function NavLinks({ route }) {
+function NavItems({ route }) {
   return (
     <Link
       to={route.path}
@@ -13,4 +13,4 @@ function NavLinks({ route }) {
   );
 }
 
-export default NavLinks;
+export default NavItems;

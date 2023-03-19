@@ -51,7 +51,7 @@ const Cart = ({ children }) => {
               <p>Total Price: ${total.toFixed(2)}</p>
               <p>Tax: ${tax}</p>
               <p>Shipping Cost: ${shipping.toFixed(2)}</p>
-              <h5>Grand Total: ${Subtotal}</h5>
+              <h5>Sub-Total: ${Subtotal}</h5>
             </div>
             <div>
               <div>{children}</div>

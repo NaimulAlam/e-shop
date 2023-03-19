@@ -35,7 +35,7 @@ function NavCart() {
         <div className="card-body">
           <span className="font-bold text-sm">Order Summary</span>
           <span className="font-bold text-lg">total items: {quantity}</span>
-          <span className="text-info">Subtotal: ${Subtotal}</span>
+          <span className="text-info">Sub-Total: ${Subtotal}</span>
           <div className="card-actions">
             {Subtotal > 0 ? (
               <Link to="/orders-review">

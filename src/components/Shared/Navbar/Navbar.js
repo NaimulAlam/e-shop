@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import UserIImg from "../../../Asset/images/her2.jpg";
-import Link from "./Link";
+import NavLinks from "./NavLinks";
 import NavCart from "./NavCart";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import { AuthContext } from "../../../Context/UserContext";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -20,19 +21,7 @@ const Navbar = () => {
     { id: 1, name: "Home", path: "/" },
     { id: 2, name: "Shop", path: "/shop" },
     { id: 3, name: "Orders", path: "/orders-review" },
-    // conditionally show the links optional chainning with user? for email important
-    !user?.email
-      ? {
-          id: 4,
-          name: "Login",
-          path: "/login",
-        }
-      : {
-          id: 5,
-          name: "Logout",
-          path: "/",
-          handleLogOut,
-        },
+    // conditional user details
     !user?.email
       ? { id: 6, name: "Sign-up", path: "/sign-up" }
       : { id: 7, name: `Welcome ${user?.email}!`, path: "#" },
@@ -41,11 +30,20 @@ const Navbar = () => {
   const UserRoutes = [
     { id: 1, name: "Profile", path: "/profile" },
     { id: 2, name: "Settings", path: "/settings" },
-    { id: 3, name: "Logout", path: "/#logout" },
+    // conditionally show the links optional chainning with user? for email important
+    !user?.email
+      ? {}
+      : {
+          id: 5,
+          name: "Logout",
+          path: "/",
+          className: "btn btn-sm btn-outline btn-error rounded-md my-2 p-0",
+          handleLogOut,
+        },
   ];
 
   return (
-    <div className="navbar bg-base-100 sticky top-0 z-40">
+    <div className="navbar bg-base-100 sticky top-0 z-40 bg-opacity-70 border-b border-gray-200">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -53,25 +51,42 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {MainRoutes.map((route) => (
-              <Link key={route.id} route={route}></Link>
-            ))}
             <li>
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src={UserIImg} alt="" />
-                </div>
-              </label>
-              <ul
-                tabIndex={0}
-                className="ml-[-5rem] bg-base-200 rounded-box w-32"
-              >
-                {UserRoutes.map((route) => (
-                  <Link key={route.id} route={route}></Link>
-                ))}
-              </ul>
+              {MainRoutes.map((route) => (
+                <NavLinks
+                  key={route.id}
+                  route={route}
+                  className={route.className}
+                ></NavLinks>
+              ))}
+            </li>
+            <li>
+              {user?.email ? (
+                <>
+                  <label
+                    tabIndex={0}
+                    className="avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img src={UserIImg} alt="" />
+                    </div>
+                  </label>
+                  <ul tabIndex={0} className="ml-[-5rem] p-4 bg-base-200 w-32">
+                    {UserRoutes.map((route) => (
+                      <NavLinks key={route.id} route={route}></NavLinks>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <Link
+                  to="/login"
+                  className="btn btn-sm btn-outline btn-success"
+                >
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>
@@ -81,9 +96,15 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {MainRoutes.map((route) => (
-            <Link key={route.id} route={route}></Link>
-          ))}
+          <li>
+            {MainRoutes.map((route) => (
+              <NavLinks
+                key={route.id}
+                route={route}
+                className={route.className}
+              ></NavLinks>
+            ))}
+          </li>
         </ul>
       </div>
       <div className="navbar-end hidden lg:flex">
@@ -91,19 +112,27 @@ const Navbar = () => {
           <NavCart></NavCart>
         </div>
         <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src={UserIImg} alt="" />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            {UserRoutes.map((route) => (
-              <Link key={route.id} route={route}></Link>
-            ))}
-          </ul>
+          {user?.email ? (
+            <>
+              <label tabIndex={0} className="avatar mx-2">
+                <div className="w-12 rounded-full">
+                  <img src={UserIImg} alt="" />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                {UserRoutes.map((route) => (
+                  <NavLinks key={route.id} route={route}></NavLinks>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <Link to="/login" className="btn btn-md btn-outline btn-success">
+              Login
+            </Link>
+          )}
         </div>
       </div>
       <div className="navbar-end lg:hidden md:flex">

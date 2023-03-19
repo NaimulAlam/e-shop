@@ -4,6 +4,7 @@ import Featured from "./Featured";
 import BannerA from "./BannerA";
 import CollectionMain from "./CollectionMain";
 import BannerB from "./BannerB";
+import BrandSlide from "./BrandSlide";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <BannerA></BannerA>
       <CollectionMain></CollectionMain>
       <BannerB></BannerB>
+      <BrandSlide></BrandSlide>
     </div>
   );
 }

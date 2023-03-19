@@ -68,7 +68,9 @@ function Footer() {
       </footer>
       <footer className="footer px-10 py-12 border-t bg-base-200 text-base-content border-base-300 justify-between">
         <div>
-          <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+          <p>
+            Copyright © {new Date().getFullYear()} - All right reserved by E-Shop developed by Naim @ wsb
+          </p>
         </div>
         <div>
           <a href="#top">

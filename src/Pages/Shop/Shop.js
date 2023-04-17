@@ -6,7 +6,7 @@ import { CartDetailsContext } from "../../Context/CartContext";
 
 const Shop = () => {
   const { products, previousCart } = useLoaderData();
-
+  console.log("products from shop", products[0]._id);
   const { cart, setCart, handleAddtoCart, clearCart } =
     useContext(CartDetailsContext);
 
@@ -26,7 +26,7 @@ const Shop = () => {
         <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 justify-items-center">
           {products.map((product) => (
             <ProductCard
-              key={product.id}
+              key={product._id}
               product={product}
               handleAddtoCart={handleAddtoCart}
             ></ProductCard>

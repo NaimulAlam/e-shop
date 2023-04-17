@@ -2,7 +2,8 @@ import { getStoredCart } from "../utilities/localStorage";
 
 export const LoaderProductsData = async () => {
   //get all products
-  const productsDate = await fetch("products.json");
+  const url = "https://eshopwsb.onrender.com/products";
+  const productsDate = await fetch(url);
   const products = await productsDate.json();
 
   //get cart items
